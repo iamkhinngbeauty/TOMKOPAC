@@ -3,726 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOMKOPAC DRIVING SCHOOL - Learn to Drive Safely</title>
+    <title>TOMKOPAC DRIVING SCHOOL - Learn to Drive with Confidence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @keyframes roadMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(239,68,68,0.9) 0%, rgba(234,179,8,0.9) 100%);
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Page Backgrounds */
-        .home-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                              url('https://images.unsplash.com/photo-1483729568444-4002891e572d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .about-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .courses-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1494972308805-46370ce875cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .instructors-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .gallery-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .contact-bg {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                              url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .road-bg {
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            animation: roadMove 30s linear infinite;
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        
-        .pulse {
+        .pulse-animation {
             animation: pulse 2s infinite;
         }
         
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        
-        .page {
-            display: none;
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        .instructor-card:hover {
+        .testimonial-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
         }
         
-        .gallery-item {
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            z-index: 10;
-        }
-        
-        /* Section backgrounds with driving theme */
-        .feature-section {
-            background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
-        }
-        
-        .testimonial-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                              url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .cta-section {
-            background-image: linear-gradient(rgba(239, 68, 68, 0.9), rgba(239, 68, 68, 0.9)), 
-                              url('https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .instructor-apply {
-            background-image: url('https://www.transparenttextures.com/patterns/cardboard.png');
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
-<body class="font-sans">
+<body class="bg-white">
     <!-- Navigation -->
-    <nav class="bg-red-600 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-car text-yellow-300 text-2xl"></i>
-                <a href="#" onclick="showPage('home')" class="text-2xl font-bold">TOMKOPAC <span class="text-yellow-300">DRIVING SCHOOL</span></a>
+    <nav class="bg-red-600 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-car text-yellow-400 text-3xl mr-2"></i>
+                        <span class="font-bold text-xl">TOMKOPAC</span>
+                    </div>
+                    <span class="font-semibold text-xl">DRIVING SCHOOL</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-yellow-300 transition">Home</a>
+                    <a href="#courses" class="hover:text-yellow-300 transition">Courses</a>
+                    <a href="#about" class="hover:text-yellow-300 transition">About Us</a>
+                    <a href="#testimonials" class="hover:text-yellow-300 transition">Testimonials</a>
+                    <a href="#contact" class="bg-yellow-400 text-red-700 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition">Book Now</a>
+                </div>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#" onclick="showPage('home')" class="hover:text-yellow-300 transition">Home</a>
-                <a href="#" onclick="showPage('about')" class="hover:text-yellow-300 transition">About</a>
-                <a href="#" onclick="showPage('courses')" class="hover:text-yellow-300 transition">Courses</a>
-                <a href="#" onclick="showPage('instructors')" class="hover:text-yellow-300 transition">Instructors</a>
-                <a href="#" onclick="showPage('gallery')" class="hover:text-yellow-300 transition">Gallery</a>
-                <a href="#" onclick="showPage('contact')" class="hover:text-yellow-300 transition">Contact</a>
-            </div>
-            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-red-700" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#" onclick="showPage('home')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">Home</a>
-                <a href="#" onclick="showPage('about')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">About</a>
-                <a href="#" onclick="showPage('courses')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">Courses</a>
-                <a href="#" onclick="showPage('instructors')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">Instructors</a>
-                <a href="#" onclick="showPage('gallery')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">Gallery</a>
-                <a href="#" onclick="showPage('contact')" class="block px-3 py-2 hover:bg-red-600 hover:text-yellow-300">Contact</a>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu hidden md:hidden">
+                <div class="flex flex-col space-y-4 mt-4">
+                    <a href="#home" class="block hover:text-yellow-300 transition">Home</a>
+                    <a href="#courses" class="block hover:text-yellow-300 transition">Courses</a>
+                    <a href="#about" class="block hover:text-yellow-300 transition">About Us</a>
+                    <a href="#testimonials" class="block hover:text-yellow-300 transition">Testimonials</a>
+                    <a href="#contact" class="block bg-yellow-400 text-red-700 px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition text-center">Book Now</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active home-bg text-white">
-        <!-- Hero Section -->
-        <section class="py-20 md:py-32 relative">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 fade-in">LEARN TO DRIVE WITH <span class="text-yellow-300">CONFIDENCE</span></h1>
-                <p class="text-xl md:text-2xl mb-8 fade-in delay-1">Professional driving lessons from certified instructors</p>
-                <div class="fade-in delay-2">
-                    <button onclick="showPage('courses')" class="bg-yellow-300 hover:bg-yellow-400 text-red-700 font-bold py-3 px-8 rounded-full text-lg mr-4 transition transform hover:scale-105">
-                        Our Courses
-                    </button>
-                    <button onclick="showPage('contact')" class="bg-transparent hover:bg-white hover:text-red-600 text-white font-bold py-3 px-8 border-2 border-white rounded-full text-lg transition transform hover:scale-105">
-                        Contact Us
-                    </button>
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Learn to Drive with <span class="text-yellow-300">Confidence</span></h1>
+                <p class="text-lg mb-8">TOMKOPAC Driving School offers professional driving lessons with certified instructors. Get your license faster with our proven teaching methods.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-white text-red-600 px-6 py-3 rounded-full font-bold text-center hover:bg-gray-100 transition">Book a Lesson</a>
+                    <a href="#courses" class="border-2 border-white px-6 py-3 rounded-full font-bold text-center hover:bg-white hover:text-red-600 transition">View Courses</a>
                 </div>
             </div>
-        </section>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Driving School Car" class="rounded-lg shadow-2xl max-w-md w-full pulse-animation">
+            </div>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section class="py-16 feature-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-red-600">WHY CHOOSE TOMKOPAC?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition fade-in delay-1">
-                        <div class="text-red-600 mb-4">
-                            <i class="fas fa-award text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Certified Instructors</h3>
-                        <p class="text-gray-600">Our instructors are fully certified with years of experience in teaching safe driving techniques.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition fade-in delay-2">
-                        <div class="text-red-600 mb-4">
-                            <i class="fas fa-car-side text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Modern Fleet</h3>
-                        <p class="text-gray-600">Learn in our well-maintained, modern vehicles equipped with dual controls for safety.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition fade-in delay-3">
-                        <div class="text-red-600 mb-4">
-                            <i class="fas fa-user-graduate text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">High Pass Rate</h3>
-                        <p class="text-gray-600">We boast one of the highest first-time pass rates in the region with our proven teaching methods.</p>
-                    </div>
+    <!-- Stats Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-red-50 p-6 rounded-lg shadow-md">
+                    <div class="text-red-600 text-4xl font-bold mb-2">98%</div>
+                    <div class="text-gray-700 font-semibold">Pass Rate</div>
+                </div>
+                <div class="bg-yellow-50 p-6 rounded-lg shadow-md">
+                    <div class="text-yellow-600 text-4xl font-bold mb-2">500+</div>
+                    <div class="text-gray-700 font-semibold">Students Trained</div>
+                </div>
+                <div class="bg-red-50 p-6 rounded-lg shadow-md">
+                    <div class="text-red-600 text-4xl font-bold mb-2">10+</div>
+                    <div class="text-gray-700 font-semibold">Years Experience</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Testimonials -->
-        <section class="py-16 testimonial-section">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-white">WHAT OUR STUDENTS SAY</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-md fade-in">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-4">
-                                <i class="fas fa-user text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Emmanuel Appiah</h4>
-                                <div class="flex text-yellow-300">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600">"I was so nervous about learning to drive, but my instructor at Tomkopac was incredibly patient and supportive. Passed my test first time!"</p>
-                    </div>
-                    <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-md fade-in delay-1">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-4">
-                                <i class="fas fa-user text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Thomas maison</h4>
-                                <div class="flex text-yellow-300">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600">"The defensive driving course changed how I view road safety. I feel much more confident and aware on the roads now. Highly recommend!"</p>
-                    </div>
-                </div>
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-red-600 mb-2">Our Driving Courses</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose the perfect course for your needs and start your journey to becoming a confident driver.</p>
             </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="py-16 cta-section text-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold mb-6">READY TO START YOUR DRIVING JOURNEY?</h2>
-                <p class="text-xl mb-8">Book your first lesson today and take advantage of our beginner's special!</p>
-                <button onclick="showPage('contact')" class="bg-yellow-300 hover:bg-yellow-400 text-red-700 font-bold py-3 px-8 rounded-full text-lg pulse">
-                    Book Now <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page about-bg">
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 fade-in">
-                        <h2 class="text-3xl font-bold text-red-600 mb-6">ABOUT TOMKOPAC DRIVING SCHOOL</h2>
-                        <p class="text-gray-600 mb-4">Founded in 2025, Tomkopac Driving School has been helping students of all ages become safe, confident drivers for nearly two decades.</p>
-                        <p class="text-gray-600 mb-4">Our mission is to provide high-quality driver education that emphasizes defensive driving techniques, road safety awareness, and responsible driving habits.</p>
-                        <p class="text-gray-600 mb-6">We pride ourselves on our patient, professional instructors who adapt their teaching methods to each student's individual learning style.</p>
-                        <div class="bg-red-100 p-4 rounded-lg border-l-4 border-red-600">
-                            <p class="text-red-700 font-medium"><i class="fas fa-quote-left text-red-600 mr-2"></i> Driving is a life skill that requires proper training. Our goal isn't just to help you pass the test, but to become a safe driver for life.</p>
-                        </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition duration-300">
+                    <div class="h-48 bg-red-600 flex items-center justify-center">
+                        <i class="fas fa-car-side text-white text-6xl"></i>
                     </div>
-                    <div class="md:w-1/2 fade-in delay-1">
-                        <img src="data:image/jpeg;base64,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" alt="Driving school car" class="rounded-lg shadow-xl w-full">
-                    </div>
-                </div>
-                
-                <div class="mt-16 fade-in delay-2">
-                    <h3 class="text-2xl font-bold text-red-600 mb-6">OUR VALUES</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white p-6 rounded-lg border-t-4 border-red-600 shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Safety First</h4>
-                            <p class="text-gray-600">We prioritize safe driving habits above all else, teaching defensive driving techniques that protect you and others on the road.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg border-t-4 border-yellow-300 shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Student-Centered</h4>
-                            <p class="text-gray-600">Every student learns differently. Our instructors adapt their teaching methods to suit your individual needs and learning style.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg border-t-4 border-red-600 shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Community Focus</h4>
-                            <p class="text-gray-600">We're committed to making our roads safer by producing responsible, well-trained drivers who contribute positively to our community.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Courses Page -->
-    <div id="courses" class="page courses-bg">
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-red-600">OUR DRIVING COURSES</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Beginner Course -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-2 fade-in">
-                        <div class="bg-red-600 text-white py-4 px-6">
-                            <h3 class="text-xl font-bold">Beginner Driver Course</h3>
-                            <p class="text-yellow-300">Perfect for first-time drivers</p>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-center mb-6">
-                                <span class="text-4xl font-bold text-red-600">GHC299</span>
-                                <span class="text-gray-500">/10 lessons</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>10 hours of behind-the-wheel training</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Road rules and signs education</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Basic vehicle maintenance</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Parking techniques</span>
-                                </li>
-                            </ul>
-                            <button onclick="showPage('contact')" class="w-full bg-yellow-300 hover:bg-yellow-400 text-red-700 font-bold py-2 px-4 rounded transition">
-                                Enroll Now
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Refresher Course -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-2 fade-in delay-1">
-                        <div class="bg-red-600 text-white py-4 px-6">
-                            <h3 class="text-xl font-bold">Refresher Course</h3>
-                            <p class="text-yellow-300">For returning drivers</p>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-center mb-6">
-                                <span class="text-4xl font-bold text-red-600">GHC199</span>
-                                <span class="text-gray-500">/6 lessons</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>6 hours of behind-the-wheel training</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Current road rules update</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Defensive driving techniques</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Confidence building</span>
-                                </li>
-                            </ul>
-                            <button onclick="showPage('contact')" class="w-full bg-yellow-300 hover:bg-yellow-400 text-red-700 font-bold py-2 px-4 rounded transition">
-                                Enroll Now
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Advanced Course -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-2 fade-in delay-2">
-                        <div class="bg-red-600 text-white py-4 px-6">
-                            <h3 class="text-xl font-bold">Advanced Driving</h3>
-                            <p class="text-yellow-300">For experienced drivers</p>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-center mb-6">
-                                <span class="text-4xl font-bold text-red-600">GHC399</span>
-                                <span class="text-gray-500">/12 lessons</span>
-                            </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>12 hours of advanced training</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Emergency maneuvers</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Adverse weather driving</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check text-green-500 mr-2"></i>
-                                    <span>Night driving techniques</span>
-                                </li>
-                            </ul>
-                            <button onclick="showPage('contact')" class="w-full bg-yellow-300 hover:bg-yellow-400 text-red-700 font-bold py-2 px-4 rounded transition">
-                                Enroll Now
-                            </button>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Beginner Course</h3>
+                        <p class="text-gray-600 mb-4">Perfect for first-time drivers. Learn the fundamentals of driving from scratch.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">$299</span>
+                            <a href="#contact" class="text-yellow-600 hover:text-yellow-700 font-semibold">Enroll Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-16 bg-white p-8 rounded-lg shadow-md fade-in delay-3">
-                    <h3 class="text-2xl font-bold text-red-600 mb-4">Frequently Asked Questions</h3>
+                <!-- Course 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition duration-300">
+                    <div class="h-48 bg-yellow-500 flex items-center justify-center">
+                        <i class="fas fa-tachometer-alt text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intermediate Course</h3>
+                        <p class="text-gray-600 mb-4">For those with some experience who want to refine their skills and prepare for the test.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">$399</span>
+                            <a href="#contact" class="text-yellow-600 hover:text-yellow-700 font-semibold">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md course-card transition duration-300">
+                    <div class="h-48 bg-red-600 flex items-center justify-center">
+                        <i class="fas fa-road text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Advanced Course</h3>
+                        <p class="text-gray-600 mb-4">Master defensive driving techniques and handle challenging road conditions.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">$499</span>
+                            <a href="#contact" class="text-yellow-600 hover:text-yellow-700 font-semibold">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1587351025558-3f982a086eb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Driving Instructor" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-red-600 mb-4">About TOMKOPAC Driving School</h2>
+                    <p class="text-gray-600 mb-4">Founded in 2010, TOMKOPAC Driving School has been helping students become safe, confident drivers for over a decade. Our mission is to provide high-quality driver education that emphasizes safety, responsibility, and confidence behind the wheel.</p>
+                    <p class="text-gray-600 mb-6">All our instructors are certified professionals with years of experience and a passion for teaching. We take pride in our personalized approach, tailoring lessons to each student's learning style and pace.</p>
                     
                     <div class="space-y-4">
-                        <div class="border-b border-gray-200 pb-4">
-                            <button class="flex justify-between items-center w-full text-left font-medium text-red-600 focus:outline-none faq-toggle">
-                                <span>What do I need to bring for my first lesson?</span>
-                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                            </button>
-                            <div class="hidden faq-content mt-2 text-gray-600">
-                                <p>For your first lesson, you'll need to bring your learner's permit or driver's license, comfortable shoes, and any corrective lenses you normally wear for driving. We'll provide the vehicle and all necessary learning materials.</p>
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-red-600"></i>
                             </div>
+                            <p class="text-gray-700">Certified and experienced instructors</p>
                         </div>
-                        
-                        <div class="border-b border-gray-200 pb-4">
-                            <button class="flex justify-between items-center w-full text-left font-medium text-red-600 focus:outline-none faq-toggle">
-                                <span>How many lessons will I need before I'm test-ready?</span>
-                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                            </button>
-                            <div class="hidden faq-content mt-2 text-gray-600">
-                                <p>This varies by student, but most beginners need between 20-30 hours of professional instruction combined with additional practice outside of lessons. Our instructors will regularly assess your progress and advise when you're ready for the test.</p>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-yellow-600"></i>
                             </div>
+                            <p class="text-gray-700">Modern, well-maintained vehicles</p>
                         </div>
-                        
-                        <div class="border-b border-gray-200 pb-4">
-                            <button class="flex justify-between items-center w-full text-left font-medium text-red-600 focus:outline-none faq-toggle">
-                                <span>Do you offer pick-up and drop-off services?</span>
-                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
-                            </button>
-                            <div class="hidden faq-content mt-2 text-gray-600">
-                                <p>Yes, we can pick you up from home, school, or work within our service area (up to 10 miles from our location). There's a small additional fee for locations beyond 5 miles.</p>
+                        <div class="flex items-start">
+                            <div class="bg-red-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-red-600"></i>
                             </div>
+                            <p class="text-gray-700">Flexible scheduling options</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-yellow-600"></i>
+                            </div>
+                            <p class="text-gray-700">Pickup and drop-off service available</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Instructors Page -->
-    <div id="instructors" class="page instructors-bg">
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-red-600">MEET OUR INSTRUCTORS</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Our certified driving instructors bring years of experience, patience, and a passion for teaching safe driving techniques to every lesson.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Instructor 1 -->
-                    <div class="instructor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 fade-in">
-                        <div class="relative">
-                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEBxux_XVPTBA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1720234688153?e=1752710400&v=beta&t=R8BL_2e_PGigShdEoDdEHaGUDiud0lnIIMyFeEk-Q4w" alt="Instructor Sir Beauty" class="w-full h-64 object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                                <h3 class="text-xl font-bold text-white">Sir Beauty</h3>
-                                <p class="text-yellow-300">Senior Instructor</p>
-                            </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-red-600 mb-2">What Our Students Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our successful students!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md testimonial-card transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-red-600"></i>
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="flex text-yellow-300 mr-4">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="text-gray-600">15 years experience</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">Sir Beauty specializes in working with nervous beginners and has helped hundreds of students overcome their driving anxiety.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Beginner Friendly</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Defensive Driving</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Patient</span>
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Instructor 2 -->
-                    <div class="instructor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 fade-in delay-1">
-                        <div class="relative">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4TQxqkvNqLcNDgZT2GlNoinRErc3LI_7dQ&s" alt="Instructor Issabella" class="w-full h-64 object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                                <h3 class="text-xl font-bold text-white">Issabella Quansah</h3>
-                                <p class="text-yellow-300">Teen Specialist</p>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="flex text-yellow-300 mr-4">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <span class="text-gray-600">8 years experience</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">Issabella has a special talent for connecting with teenage drivers and making learning fun while maintaining safety standards.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Teen Specialist</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Bilingual (English/Spanish)</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Engaging</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Instructor 3 -->
-                    <div class="instructor-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 fade-in delay-2">
-                        <div class="relative">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4TQxqkvNqLcNDgZT2GlNoinRErc3LI_7dQ&s" alt="Instructor David" class="w-full h-64 object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                                <h3 class="text-xl font-bold text-white">David Wilson</h3>
-                                <p class="text-yellow-300">Advanced Driving</p>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="flex text-yellow-300 mr-4">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="text-gray-600">12 years experience</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">David is our expert in advanced driving techniques, including defensive driving, skid control, and emergency maneuvers.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Advanced Techniques</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Defensive Driving</span>
-                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">Precision Driving</span>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-gray-600">"I was so nervous about learning to drive, but my instructor at TOMKOPAC was incredibly patient and supportive. I passed my test on the first try!"</p>
                 </div>
                 
-                <div class="mt-16 bg-red-50 p-8 rounded-lg instructor-apply fade-in delay-3">
-                    <h3 class="text-2xl font-bold text-red-600 mb-4">BECOME AN INSTRUCTOR</h3>
-                    <p class="text-gray-600 mb-6">Are you passionate about road safety and enjoy teaching? We're always looking for qualified driving instructors to join our team.</p>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="md:w-1/2">
-                            <h4 class="font-bold text-red-600 mb-2">Requirements:</h4>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                <li>Clean driving record for past 5 years</li>
-                                <li>State-certified driving instructor license</li>
-                                <li>Minimum 3 years of licensed driving experience</li>
-                                <li>Excellent communication and patience</li>
-                                <li>Pass background check and drug screening</li>
-                            </ul>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md testimonial-card transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-yellow-600"></i>
                         </div>
-                        <div class="md:w-1/2">
-                            <h4 class="font-bold text-red-600 mb-2">Benefits:</h4>
-                            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                <li>Competitive pay with performance bonuses</li>
-                                <li>Flexible scheduling</li>
-                                <li>Company-provided training vehicle</li>
-                                <li>Paid training and certification renewal</li>
-                                <li>Supportive team environment</li>
-                            </ul>
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    <button onclick="showPage('contact')" class="mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition">
-                        Apply Now
-                    </button>
+                    <p class="text-gray-600">"The instructors really know how to break down complex driving situations into simple concepts. I feel so much more confident on the road now."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md testimonial-card transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-red-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Emma Rodriguez</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"I tried another driving school before and didn't have a good experience. TOMKOPAC was completely different - professional, patient, and effective. Highly recommend!"</p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Gallery Page -->
-    <div id="gallery" class="page gallery-bg">
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-red-600">OUR GALLERY</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Take a look at our facilities, vehicles, and students in action. We're proud of our learning environment and the success of our students.</p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Gallery Item 1 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in">
-                        <img src="data:image/jpeg;base64,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" alt="Driving lesson" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">One-on-One Instruction</h3>
-                                <p class="text-sm">Personalized attention for every student</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 2 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in delay-1">
-                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Our fleet" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">Modern Training Fleet</h3>
-                                <p class="text-sm">Well-maintained vehicles with dual controls</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 3 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in delay-2">
-                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1472&q=80" alt="Classroom" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">Classroom Sessions</h3>
-                                <p class="text-sm">Interactive learning of road rules and safety</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 4 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in">
-                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Parking practice" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">Parking Practice</h3>
-                                <p class="text-sm">Mastering parallel parking and other maneuvers</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 5 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in delay-1">
-                        <img src="https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Highway driving" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">Highway Driving</h3>
-                                <p class="text-sm">Building confidence for freeway driving</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Gallery Item 6 -->
-                    <div class="gallery-item relative group overflow-hidden rounded-lg fade-in delay-2">
-                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Graduation" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <div class="text-white text-center p-4">
-                                <h3 class="font-bold text-lg">Graduation Celebration</h3>
-                                <p class="text-sm">Celebrating our students' success</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 text-center fade-in delay-3">
-                    <h3 class="text-2xl font-bold text-red-600 mb-4">FOLLOW US ON SOCIAL MEDIA</h3>
-                    <p class="text-gray-600 mb-6">See more photos, student success stories, and driving tips on our social channels.</p>
-                    <div class="flex justify-center space-x-6">
-                        <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-red-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Ready to Start Driving?</h2>
+                <p class="max-w-2xl mx-auto">Contact us today to schedule your first lesson or ask any questions.</p>
             </div>
-        </section>
-    </div>
-
-    <!-- Contact Page -->
-    <div id="contact" class="page contact-bg">
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-red-600">CONTACT US</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                        </div>
+                        <div>
+                            <label for="phone" class="block mb-1">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                        </div>
+                        <div>
+                            <label for="course" class="block mb-1">Course Interest</label>
+                            <select id="course" class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800">
+                                <option value="">Select a course</option>
+                                <option value="beginner">Beginner Course</option>
+                                <option value="intermediate">Intermediate Course</option>
+                                <option value="advanced">Advanced Course</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800"></textarea>
+                        </div>
+                        <button type="submit" class="bg-yellow-400 text-red-700 px-6 py-3 rounded-full font-bold w-full hover:bg-yellow-300 transition">Send Message</button>
+                    </form>
+                </div>
                 
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2 fade-in">
-                        <h3 class="text-2xl font-bold text-red-600 mb-4">GET IN TOUCH</h3>
-                        <p class="text-gray-600 mb-6">Have questions about our courses or ready to book your first lesson? Fill out the form or contact us directly.</p>
+                <div class="md:w-1/2 md:pl-10">
+                    <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">Contact Information</h3>
                         
-                        <div class="space-y-4 mb-8">
+                        <div class="space-y-4">
                             <div class="flex items-start">
                                 <div class="bg-red-100 p-3 rounded-full mr-4">
                                     <i class="fas fa-map-marker-alt text-red-600"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800">Address</h4>
-                                    <p class="text-gray-600">Kwarekwano Tarkwa, Western Region</p>
+                                    <h4 class="font-bold">Address</h4>
+                                    <p>123 Driving Lane, Suite 100<br>Your City, State 12345</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-red-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-red-600"></i>
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-yellow-600"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800">Phone</h4>
-                                    <p class="text-gray-600">+233 598474203</p>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p>(555) 123-4567</p>
                                 </div>
                             </div>
                             
@@ -731,149 +369,147 @@
                                     <i class="fas fa-envelope text-red-600"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800">Email</h4>
-                                    <p class="text-gray-600">info@tomkopacdrivingschool.com</p>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p>info@tomkopacdrivingschool.com</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-red-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-clock text-red-600"></i>
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-yellow-600"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800">Hours</h4>
-                                    <p class="text-gray-600">Monday - Friday: 7am - 9pm<br>Saturday: 8am - 6pm<br>Sunday: 9am - 4pm</p>
+                                    <h4 class="font-bold">Hours</h4>
+                                    <p>Monday - Friday: 8am - 8pm<br>Saturday: 9am - 5pm<br>Sunday: Closed</p>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div>
-                            <h4 class="font-bold text-red-600 mb-3">SERVICE AREA</h4>
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <p class="text-gray-600">We serve the following areas:</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-2 columns-2">
-                                    <li>Kwarekwano</li>
-                                    <li>Tamso</li>
-                                    <li>New Site</li>
-                                    <li>Nzemaline</li>
-                                    <li>Bogree</li>
-                                    <li>Vision Esatate</li>
-                                </ul>
-                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-red-600 mb-2">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our driving school.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            <span class="font-semibold text-left">How many lessons will I need before I can take the driving test?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-4 bg-white">
+                            <p class="text-gray-600">The number of lessons needed varies depending on your prior experience and how quickly you learn. On average, students need between 20-30 hours of professional instruction combined with practice outside of lessons. Our instructors will assess your progress and let you know when you're ready for the test.</p>
                         </div>
                     </div>
                     
-                    <div class="md:w-1/2 fade-in delay-1">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h3 class="text-xl font-bold text-red-600 mb-6">SEND US A MESSAGE</h3>
-                            <form>
-                                <div class="mb-4">
-                                    <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                                    <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-                                        <option value="">Select a subject</option>
-                                        <option value="lesson">Book a Lesson</option>
-                                        <option value="course">Course Inquiry</option>
-                                        <option value="general">General Question</option>
-                                        <option value="employment">Employment</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                    <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
-                                </div>
-                                
-                                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition">
-                                    SUBMIT
-                                </button>
-                            </form>
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            <span class="font-semibold text-left">What should I bring to my first driving lesson?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-4 bg-white">
+                            <p class="text-gray-600">For your first lesson, please bring your learner's permit or driver's license if you have one, comfortable shoes (no flip-flops or high heels), and any glasses or contacts you normally wear for driving. We provide the vehicle and all necessary materials.</p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="mt-16 fade-in delay-2">
-                    <h3 class="text-2xl font-bold text-center text-red-600 mb-6">FIND US ON THE MAP</h3>
-                    <div class="bg-gray-200 h-96 rounded-lg overflow-hidden">
-                        <!-- Map placeholder - in a real site you would embed Google Maps here -->
-                        <div class="w-full h-full flex items-center justify-center bg-red-100 text-red-600">
-                            <div class="text-center">
-                                <i class="fas fa-map-marked-alt text-5xl mb-4"></i>
-                                <p class="font-bold">Tomkopac Driving School Location</p>
-                                <p>Kwarekwano Tarkwa, werstern Region</p>
-                            </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            <span class="font-semibold text-left">Do you offer pick-up and drop-off services?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-4 bg-white">
+                            <p class="text-gray-600">Yes! We offer pick-up and drop-off services within a 10-mile radius of our location for no additional charge. For areas beyond this radius, a small fee may apply. Please let us know your address when booking so we can arrange this service for you.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            <span class="font-semibold text-left">What makes TOMKOPAC different from other driving schools?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-4 bg-white">
+                            <p class="text-gray-600">At TOMKOPAC, we pride ourselves on our personalized approach to driver education. Our certified instructors are not just teachers but mentors who adapt to each student's learning style. We maintain small class sizes for classroom instruction and provide one-on-one attention during driving lessons. Our modern vehicles are equipped with the latest safety features, and our curriculum goes beyond just passing the test to focus on creating safe, confident drivers for life.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-yellow-300">TOMKOPAC DRIVING SCHOOL</h3>
-                    <p class="text-gray-400">Helping students become safe, confident drivers since 2025.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-yellow-300 transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-300 transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-300 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-300 transition"><i class="fab fa-youtube"></i></a>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-car text-yellow-400 text-3xl mr-2"></i>
+                        <span class="font-bold text-xl">TOMKOPAC</span>
                     </div>
+                    <p class="text-gray-400">Your trusted partner in driver education since 2010. We're committed to creating safe, confident drivers through professional instruction.</p>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4 text-yellow-300">Quick Links</h4>
+                    <h3 class="text-lg font-semibold mb-4 text-yellow-400">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" onclick="showPage('home')" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#" onclick="showPage('about')" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#" onclick="showPage('courses')" class="text-gray-400 hover:text-white transition">Courses</a></li>
-                        <li><a href="#" onclick="showPage('instructors')" class="text-gray-400 hover:text-white transition">Instructors</a></li>
-                        <li><a href="#" onclick="showPage('gallery')" class="text-gray-400 hover:text-white transition">Gallery</a></li>
-                        <li><a href="#" onclick="showPage('contact')" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#courses" class="text-gray-400 hover:text-white transition">Courses</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4 text-yellow-300">Courses</h4>
+                    <h3 class="text-lg font-semibold mb-4 text-yellow-400">Courses</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Beginner Driver Course</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refresher Course</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Advanced Driving</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Beginner Course</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Intermediate Course</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Advanced Course</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Defensive Driving</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Senior Driver Course</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Refresher Lessons</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-lg mb-4 text-yellow-300">Contact Info</h4>
-                    <address class="not-italic text-gray-400 space-y-2">
-                        <p><i class="fas fa-map-marker-alt mr-2 text-red-500"></i> Tarkwa, Western Region</p>
-                        <p><i class="fas fa-phone-alt mr-2 text-red-500"></i> +233 598474203</p>
-                        <p><i class="fas fa-envelope mr-2 text-red-500"></i> info@tomkopacdrivingschool.com</p>
-                        <p><i class="fas fa-clock mr-2 text-red-500"></i> Mon-Fri: 7am-9pm, Sat: 8am-6pm, Sun: 9am-4pm</p>
-                    </address>
+                    <h3 class="text-lg font-semibold mb-4 text-yellow-400">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="bg-gray-800 hover:bg-red-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-red-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-red-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-red-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter for driving tips and special offers.</p>
+                    <div class="mt-4 flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Tomkopac Driving School. All rights reserved.</p>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 TOMKOPAC Driving School. All rights reserved.</p>
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
@@ -883,59 +519,63 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-opacity opacity-0 invisible hover:bg-red-700">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-
-        // Page navigation
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
             });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission (prevent default for demo)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you shortly.');
+                form.reset();
+            });
         }
-
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-toggle').forEach(button => {
-            button.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                const icon = this.querySelector('i');
-                
-                content.classList.toggle('hidden');
-                
-                if (content.classList.contains('hidden')) {
-                    icon.classList.remove('rotate-180');
-                } else {
-                    icon.classList.add('rotate-180');
-                }
-            });
-        });
-
-        // Add fade-in class to elements when they come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
     </script>
 </body>
 </html>
