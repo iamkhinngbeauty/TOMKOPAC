@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daniel IT Training Hub</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6a416ad033.js" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .hero-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url('https://images.unsplash.com/photo-1531496651581-74c3dc9383a5');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .nav-link:hover {
+        color: #00c7ff;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="text-2xl font-bold text-blue-600">Daniel IT Hub</div>
+          <div class="hidden md:flex space-x-6">
+            <a href="#" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+            <a href="#courses" class="nav-link text-gray-700 hover:text-blue-600">Courses</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+          </div>
+          <div class="md:hidden">
+            <button id="menu-toggle" class="text-gray-700 text-2xl">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden flex-col space-y-4 pb-4">
+          <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#about" class="block text-gray-700 hover:text-blue-600">About</a>
+          <a href="#courses" class="block text-gray-700 hover:text-blue-600">Courses</a>
+          <a href="#contact" class="block text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+          Welcome to Daniel IT Training Hub
+        </h1>
+        <p class="text-lg sm:text-xl mb-8">
+          Empowering youth with practical tech skills for today's job market.
+        </p>
+        <a href="#courses" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow-md transition duration-300">
+          Get Started
+        </a>
+      </div>
+    </section>
+
+    <!-- Optional: Add More Sections Below -->
+    <!-- Example: About Section -->
+    <section id="about" class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">About Us</h2>
+        <p class="text-lg text-gray-600">
+          At Daniel IT Training Hub, we focus on providing hands-on IT training in networking, cybersecurity, and digital skills to prepare students for the real world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Example: Courses Section -->
+    <section id="courses" class="py-16 bg-gray-100">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-10">Our Courses</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">Networking Essentials</h3>
+            <p>Learn the fundamentals of computer networks, IP addressing, and network configurations.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">Cybersecurity Basics</h3>
+            <p>Understand threats, firewalls, and how to protect systems from attacks.</p>
+          </div>
+          <div class="bg-white p-6 rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">Computer Literacy</h3>
+            <p>Master MS Office, internet usage, typing, and essential computing knowledge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example: Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+        <p class="text-gray-600 mb-6">Want to enroll or ask a question? Reach out to us!</p>
+        <a href="mailto:danielithub@example.com" class="text-blue-600 font-semibold hover:underline">
+          danielithub@example.com
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+      <p>&copy; 2025 Daniel IT Training Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Toggle Script -->
+    <script>
+      document.getElementById("menu-toggle").addEventListener("click", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+
+  </body>
+</html>
